@@ -1,15 +1,16 @@
 import time
 import requests
 from prometheus_client import start_http_server, Gauge
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 import os
 
 load_dotenv()
 
 # Configuration
 URL = os.getenv("URL_WORDPRESS")
+PORT = os.getenv("EXPORT_PORT")
 WORDPRESS_URL = "https://"+URL+"/wp-json/wp/v2"
-EXPORTER_PORT = 8000
+EXPORTER_PORT = URL
 SCRAPE_INTERVAL = 15  # in seconds
 
 # Prometheus metrics
